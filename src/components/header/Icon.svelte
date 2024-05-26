@@ -33,11 +33,11 @@
     <a on:click={() => {goTo("/search")}}>Search</a>
     <a on:click={() => {goTo("/bookmark")}}>Bookmark</a>
     <a on:click={() => {goTo("/about")}}>About</a>
-    {#if $user}
+    <!-- {#if $user}
       <a on:click={() => {goTo("/profile")}}>Profile</a>
     {:else}
       <a on:click={() => {goTo("/login")}}>Login</a>
-    {/if}
+    {/if} -->
   </div>
 </div>
 

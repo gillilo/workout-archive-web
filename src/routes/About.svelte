@@ -7,7 +7,7 @@
   $: query = qs.parse($querystring)
   $: name = query.name || '김회준'
   $: email = query.email || 'ghlwns1535@gmail.com'
-  $: frontRepo = query.blog || 'https://github.com/gillilo/workout-archive'
+  $: frontRepo = query.blog || 'https://github.com/gillilo/workout-archive-web'
   $: backRepo = query.blog || 'https://github.com/gillilo/workout-archive-api'
   $: phone = query.phone || '+82-10-3064-9258'
 </script>
@@ -18,25 +18,28 @@
       <img src="/assets/svelte.png" alt="svelte">
     </div>
     <div class="photo">
+      <img src="/assets/snowpack.png" alt="snowpack">
+    </div>
+    <div class="photo">
       <img src="/assets/scss.png" alt="scss">
     </div>
     <div class="photo">
       <img src="/assets/nodejs.png" alt="nodejs">
     </div>
-    <div class="photo">
-      <img src="/assets/snowpack.png" alt="snowpack">
-    </div>
-    <div class="photo">
+    <!-- <div class="photo">
       <img src="/assets/netlify.png" alt="netlify">
-    </div>
+    </div> -->
     <div class="photo">
       <img src="/assets/springboot.png" alt="springboot">
     </div>
     <div class="photo">
       <img src="/assets/jpa.png" alt="jpa">
     </div>
-    <div class="photo">
+    <!-- <div class="photo">
       <img src="/assets/aws.png" alt="aws">
+    </div> -->
+    <div class="photo">
+      <img src="/assets/docker.png" alt="docker">
     </div>
   </div>
   <div class="details">
