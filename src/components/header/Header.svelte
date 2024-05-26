@@ -48,7 +48,7 @@
           </a>
         </li>
       {/each}
-      {#if $user}
+      <!-- {#if $user}
         <li>
           <a 
             use:link
@@ -74,7 +74,7 @@
             Login
           </a>
         </li>
-      {/if}
+      {/if} -->
     </ul>
   </nav>
   <Icon />
