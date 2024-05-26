@@ -1,0 +1,57 @@
+$color--black: #000;
+$color--black-90: rgba($color--black, .9);
+$color--black-80: rgba($color--black, .8);
+$color--black-70: rgba($color--black, .7);
+$color--black-50: rgba($color--black, .5);
+$color--black-30: rgba($color--black, .3);
+
+$color--white: #EBEBEB;
+$color--white-90: rgba($color--white, .9);
+$color--white-80: rgba($color--white, .8);
+$color--white-70: rgba($color--white, .7);
+$color--white-60: rgba($color--white, .6);
+$color--white-50: rgba($color--white, .5);
+$color--white-30: rgba($color--white, .3);
+$color--white-10: rgba($color--white, .1);
+$color--white-5: rgba($color--white, .05);
+
+$color--primary: #970008;
+$color--area: #DBDBDB;
+
+$tablet: "all and (max-width: 1200px)";
+$mobile: "all and (max-width: 720px)";
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 0 0;
+  position: relative;
+
+  @media #{$tablet} {
+    padding: 40px 40px 0;
+  }
+
+  @media #{$mobile} {
+    padding: 40px 20px 0;
+  }
+}
+
+:global(body::-webkit-scrollbar) {
+  height: 8px;
+  width: 8px;
+  /* 스크롤바의 너비 */
+}
+
+:global(body::-webkit-scrollbar-thumb) {
+  height: 30%;
+  /* 스크롤바의 길이 */
+  background: $color--primary;
+  /* 스크롤바의 색상 */
+
+  border-radius: 10px;
+}
+
+:global(body::-webkit-scrollbar-track) {
+  background: $color--area;
+  /*스크롤바 뒷 배경 색상*/
+}
