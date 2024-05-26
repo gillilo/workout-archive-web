@@ -34,5 +34,9 @@
     "svelte-fa": "^3.0.4",
     "svelte-modals": "^1.2.1",
     "svelte-spa-router": "^3.0.5"
+  },
+  "dependencies": {
+    "browserslist": "^4.23.0",
+    "caniuse-lite": "^1.0.30001621"
   }
 }
