@@ -20,8 +20,10 @@ export async function searchWorkouts(payload) {
   loading.set(true)
   message.set('')
   try {
-    const res = await axios.post('/.netlify/functions/workouts', {...payload})
-    workouts.set(res.data)
+    // const res = await axios.post('/.netlify/functions/workouts', {...payload})
+    // workouts.set(res.data);
+    const res = await axios.get('http://localhost:8002/workout')
+    workouts.set(res.data.data);
     searchParams.set({...payload})
   } catch (msg) {
     workouts.set([])
