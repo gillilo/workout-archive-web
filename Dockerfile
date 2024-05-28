@@ -1,19 +1,18 @@
-FROM node:20 as build
-WORKDIR /app
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-COPY . .
-ENV REQUEST_URL localhost:81
-RUN npm i
-RUN npm run build
-
+# FROM node:20-alpine as build
+# WORKDIR /app
+# ENV REQUEST_URL localhost:81
+# COPY docker-entrypoint.sh /usr/local/bin/
+# RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+# COPY ["package.json", "package-lock.json", "./"]
+# RUN ["npm", "install"]
+# COPY . .
+# RUN npm run build
 FROM nginx:alpine
 WORKDIR /app
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=build /app/build /usr/share/nginx/html
+COPY /build /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
-
 # exec /usr/local/bin/docker-entrypoint.sh: no such file or directory : 개행문자열을 LF 형식으로 바꿔야 함 (vscode 우측 하단에 CRLF / LF)
 # $ git add .
 # warning: in the working copy of 'Dockerfile', LF will be replaced by CRLF the next time Git touches it
