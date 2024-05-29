@@ -24,7 +24,8 @@ export async function searchWorkouts(payload) {
     // workouts.set(res.data);
     const { name, type, muscle, difficulty, offset } = payload
     // const res = await axios.get(`${process.env.REQUEST_URL}/workout/ls?n=${name}&t=${type}&m=${muscle}&d=${difficulty}&o=${offset}&l=10`)
-    const res = await axios.get(`https://woa.rlaghlwns.com/workout/ls?n=${name}&t=${type}&m=${muscle}&d=${difficulty}&o=${offset}&l=10`)
+    // const res = await axios.get(`https://woa.rlaghlwns.com/workout/ls?n=${name}&t=${type}&m=${muscle}&d=${difficulty}&o=${offset}&l=10`)
+    const res = await axios.get(`/api/workout/ls?n=${name}&t=${type}&m=${muscle}&d=${difficulty}&o=${offset}&l=10`)
     workouts.set(res.data.data);
     searchParams.set({...payload})
   } catch (msg) {
@@ -47,7 +48,8 @@ export async function moreWorkouts(payload) {
     // const arr = [...get(workouts), ...res.data]
     const { name, type, muscle, difficulty, offset } = payload
     // const res = await axios.get(`${process.env.REQUEST_URL}/workout/ls?n=${name}&t=${type}&m=${muscle}&d=${difficulty}&o=${offset}&l=10`)
-    const res = await axios.get(`https://woa.rlaghlwns.com/workout/ls?n=${name}&t=${type}&m=${muscle}&d=${difficulty}&o=${offset}&l=10`)
+    // const res = await axios.get(`https://woa.rlaghlwns.com/workout/ls?n=${name}&t=${type}&m=${muscle}&d=${difficulty}&o=${offset}&l=10`)
+    const res = await axios.get(`/api/workout/ls?n=${name}&t=${type}&m=${muscle}&d=${difficulty}&o=${offset}&l=10`)
     const arr = [...get(workouts), ...res.data.data]
     workouts.set(arr)
     searchParams.set({...payload})
