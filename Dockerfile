@@ -16,4 +16,4 @@ CMD ["nginx", "-g", "daemon off;"]
 
 # docker build -t gillilo/workout-archive-web:latest .
 # docker push gillilo/workout-archive-web:latest
-# docker run -d --name workout-archive-web --network workout-archive -p 8808:80 -e REQUEST_URL=woa.rlaghlwns.com gillilo/workout-archive-web:latest
+# docker run -d --name workout-archive-web --network workout-archive -p 8808:80 -e REQUEST_URL=https://woa.rlaghlwns.com gillilo/workout-archive-web:latest
