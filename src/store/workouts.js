@@ -22,7 +22,9 @@ export async function searchWorkouts(payload) {
   try {
     // const res = await axios.post('/.netlify/functions/workouts', {...payload})
     // workouts.set(res.data);
-    const res = await axios.get('http://localhost:8002/workout')
+    const { name, type, muscle, difficulty, offset } = payload
+    // const res = await axios.get(`${process.env.REQUEST_URL}/workout/ls?n=${name}&t=${type}&m=${muscle}&d=${difficulty}&o=${offset}&l=10`)
+    const res = await axios.get(`https://woa.rlaghlwns.com/workout/ls?n=${name}&t=${type}&m=${muscle}&d=${difficulty}&o=${offset}&l=10`)
     workouts.set(res.data.data);
     searchParams.set({...payload})
   } catch (msg) {
@@ -40,9 +42,13 @@ export async function moreWorkouts(payload) {
   loading.set(true)
   message.set('')
   try {
-    const res = await axios.post('/.netlify/functions/workouts', {...payload})
+    // const res = await axios.post('/.netlify/functions/workouts', {...payload})
     // workouts.set(res.data)
-    const arr = [...get(workouts), ...res.data]
+    // const arr = [...get(workouts), ...res.data]
+    const { name, type, muscle, difficulty, offset } = payload
+    // const res = await axios.get(`${process.env.REQUEST_URL}/workout/ls?n=${name}&t=${type}&m=${muscle}&d=${difficulty}&o=${offset}&l=10`)
+    const res = await axios.get(`https://woa.rlaghlwns.com/workout/ls?n=${name}&t=${type}&m=${muscle}&d=${difficulty}&o=${offset}&l=10`)
+    const arr = [...get(workouts), ...res.data.data]
     workouts.set(arr)
     searchParams.set({...payload})
   } catch (msg) {

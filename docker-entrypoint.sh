@@ -1,11 +1,8 @@
 #!/bin/sh
 set -e
 
-# .env 파일 경로 설정
-ENV_FILE="/app/.env"
+# default.conf.template 파일에서 환경 변수를 대체하고 결과를 default.conf에 저장
+envsubst '${REQUEST_URL}' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
 
-# 현재 환경 변수들을 .env 파일에 저장
-printenv | grep -v "no_proxy" > $ENV_FILE &
-
-# 전달된 명령어 실행
+# 다음 명령어를 실행
 exec "$@"

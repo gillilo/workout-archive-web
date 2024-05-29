@@ -1,30 +1,18 @@
-# FROM node:20-alpine as build
-# WORKDIR /app
-# ENV REQUEST_URL localhost:81
-# COPY docker-entrypoint.sh /usr/local/bin/
-# RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-# COPY ["package.json", "package-lock.json", "./"]
-# RUN ["npm", "install"]
-# COPY . .
-# RUN npm run build
-FROM nginx:alpine
+FROM node:20-alpine as build
 WORKDIR /app
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY /build /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
-# exec /usr/local/bin/docker-entrypoint.sh: no such file or directory : 개행문자열을 LF 형식으로 바꿔야 함 (vscode 우측 하단에 CRLF / LF)
-# $ git add .
-# warning: in the working copy of 'Dockerfile', LF will be replaced by CRLF the next time Git touches it
-# git add 하면 LF를 자동으로 CRLF로 바꾸기 때문에 다음번에 작업 할때 git pull 한 다음 파일 개행 속성을 CRLF 에서 LF로 꼭 바꿔줘야 docker error가 안난다~(vscode 우측 하단에 CRLF / LF)
-# COPY docker-entrypoint.sh /usr/local/bin/
-# RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-# RUN npm i
-# RUN npm run build
-# EXPOSE 3000
-# ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
-# CMD ["node", "/app/build"]
-# CMD ["/app/server.sh"]
+COPY . .
+RUN npm i
+RUN npm run build
 
-# docker build -t test .
-# docker run -d --network rmcalc --name rmcalc-web -p 3000:3000 -e RMCALC_EXPRESS_URL=http://rmcalc-express:81 gillilo/rmcalc-web:latest
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf.template
+ENV REQUEST_URL localhost:8080
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 80
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["nginx", "-g", "daemon off;"]
+
+# docker build -t gillilo/workout-archive-web:latest .
+# docker run -d --name workout-archive-web --network workout-archive -p 8808:80 -e REQUEST_URL=woa.rlaghlwns.com gillilo/workout-archive-web:latest
